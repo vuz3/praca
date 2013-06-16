@@ -1,0 +1,124 @@
+/* 
+    Document   : sites
+    Created on : 2013-04-28, 16:59:50
+    Author     : vuz3
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+.site {
+    padding: 10px;
+    color: grey;
+}
+
+.site td {
+    padding: 3px;
+    border-bottom:1px dashed red;
+}
+
+.site img {
+    float: right;
+    width: 30px;
+    height: 30px;
+}
+
+#settings {
+    margin-top: 25px;
+    width: 500px;
+}
+
+#settings form {
+    float: right;
+    margin:0 auto; 
+}
+
+#settings label {
+    float: left;
+    margin-bottom: 15px;
+    padding: 2px;
+}
+
+#settings input {
+    padding: 2px;
+    float: right;
+    height: 20px;
+    margin-bottom: 8px;
+}
+
+#success {
+    color:#3f5a04;
+    background:#dfedc0 url(/tdesign/assets/images/manage/sprite.png) no-repeat 15px -841px;
+}
+
+#error {
+    background:#ffdede url(/tdesign/assets/images/manage/sprite.png) no-repeat 17px -712px;
+    color:#be0000;
+}
+
+#edit_menu {
+    margin-left: 100px;
+    margin-top: 25px;
+    width: 500px;
+}
+
+#edit_menu td {
+    padding: 10px;
+}
+
+.add {
+    padding: 3px;
+}
+
+.add img {
+    width: 50px;
+    height: 50px;
+}
+
+.content_add {
+    float: left;
+    margin-left: 200px;
+    width: 500px;
+    height: auto;
+    padding: 5px;
+}
+
+.site_choose {
+    margin-left: 85px;
+    margin-bottom: 8px;
+    width: 150px;
+    padding: 5px;
+}
+
+.site_img {
+    margin-left: 82px;
+    width: 150px;
+    margin-bottom: 8px;
+}
+
+.content_add label {
+    color: black;
+}
+
+.title{
+    float: right;
+    width: 358px;
+    padding:5px;
+}
+
+.textarea {
+    float: right;
+    margin-top: 5px;
+    padding: 3px;
+}
+
+.dodaj {
+    clear: both;
+    width: 50px;
+    height: 30px;
+    margin-right: 250px;
+    float: right;
+}
+
+.dodaj:hover {
+    background-color: #dfedc0;
+}
