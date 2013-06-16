@@ -6,20 +6,23 @@
 $(document).ready(function() {
     var action = '/praca_mark_I/service/';
     $("#dodajUsluge").click(function() {
-        var dane2 = $("title").val();
-        var dane3 = $("price").val();
+        var dane1 = $("#user_id").val();
+        var dane2 = $("#title").val();
+        var dane3 = $("#price").val();
         jQuery.post(action + 'serviceAdd',
                 {
-                    what: dane2,
+                    users_id: dane1,
+                    title: dane2,
+                    price: dane3,
                 },
                 function(response) {
                     if (response != 'ok') {
-                        $("#services").load('/praca_mark_I/service/serviceShow');
+                        $("#service").load('/praca_mark_I/service/serviceShow');
                     } else {
-                        $("#services").load('/praca_mark_I/service/serviceShow');
+                        $("#service").load('/praca_mark_I/service/serviceShow');
                     }
                 }).done(function() {
-            $("#services").load('/praca_mark_I/service/serviceShow');
+            $("#service").load('/praca_mark_I/service/serviceShow');
         });
     });
 });

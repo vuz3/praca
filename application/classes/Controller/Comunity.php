@@ -19,7 +19,7 @@ class Controller_Comunity extends Controller_Site {
             $login = Auth::instance()->get_user();
             $chat = ORM::factory('Transmision');
             $check_chat = $chat->where('users_id', '=', $login->id)->find();
-            $link = $login->username;
+            $link = $login;
             if (0 < $check_chat->count_all()) {
                 $this->redirect('/');
             } else {

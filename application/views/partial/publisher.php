@@ -1,5 +1,5 @@
 
-<p>Link do Twojego czatu: <?php if (isset($link)) echo URL::base() . 'comunity/publish/' . $link ?></p>
+<p>Link do Twojego czatu: <?php if (isset($link)) echo URL::base() . 'comunity/publish/' . $link->username ?></p>
 <script type="text/javascript">
     var flashvars = {
         name1: "hello"
@@ -45,11 +45,14 @@
         </tfoot>
         <tbody>
             <tr>
-                <td>1.</td>
-                <td><input type="text" name="title" id="title"></td>
-                <td><input type="text" name="price" id="price"></td>
+                <td><input type="text" name="user_id" id="user_id" value="<?= $link->id ?>"/></td></td>
+                <td><input type="text" name="title" id="title"/></td>
+                <td><input type="text" name="price" id="price"/></td>
                 <td><img src="http://antczak.org/source/dynamic_forms/11.png" id="dodajUsluge" alt="dodaj"></td>
             </tr>
         </tbody>
     </table>
+</div>
+
+<div id="service">
 </div>

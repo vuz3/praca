@@ -82,7 +82,7 @@ class Controller_MainController extends Controller_Template {
     public function add_services($user_id, $title, $price) {
         if (!empty($user_id) && !empty($title) && !empty($price)) {
             $service = ORM::factory('SimpleUser_Services');
-            $service->user_id = $user_id;
+            $service->users_id = $user_id;
             $service->title = $title;
             $service->price = $price;
             try {
