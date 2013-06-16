@@ -75,7 +75,7 @@ class Controller_User_User extends Controller_MainController {
     public function action_index() {
         $this->template->center = View::factory('manage/sites/index');
     }
-
+    
     /**
      * Logout users
      

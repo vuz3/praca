@@ -147,7 +147,7 @@ Route::set('usersys', 'my/(<lang>/)(<controller>(/<action>(/<login>)))',
   ))
   ->defaults(array(
       'directory' => 'User',
-      'controller' => 'site',
+      'controller' => 'User',
       'action' => 'index',
   ));
 

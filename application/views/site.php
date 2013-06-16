@@ -37,6 +37,12 @@
                 if (isset($center))
                     echo $center . "\n";
                 ?>
+                <div id="service">
+                    <?php
+                    if (isset($service))
+                        echo $service . "<br>"
+                        ?>
+                </div>
                 <?php
                 if (isset($pagination))
                     echo "<div id=\"pagination\">" . $pagination . "</div>";

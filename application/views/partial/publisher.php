@@ -1,9 +1,3 @@
-<?php
-/**
- * Publisher template
- * 
- */
-?>
 
 <p>Link do Twojego czatu: <?php if (isset($link)) echo URL::base() . 'comunity/publish/' . $link ?></p>
 <script type="text/javascript">
@@ -32,4 +26,30 @@
     </form>
 </div>
 
-
+<div id="services">
+    <table id="listaOsob">
+        <thead>
+            <tr>
+                <th>Lp</th>
+                <th>Tytuł</th>
+                <th>Cena</th>
+                <th>+/-</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <th colspan="4">
+                    <input type="submit" name="wyslij" value="Wyślij">
+                </th>
+            </tr>
+        </tfoot>
+        <tbody>
+            <tr>
+                <td>1.</td>
+                <td><input type="text" name="title" id="title"></td>
+                <td><input type="text" name="price" id="price"></td>
+                <td><img src="http://antczak.org/source/dynamic_forms/11.png" id="dodajUsluge" alt="dodaj"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

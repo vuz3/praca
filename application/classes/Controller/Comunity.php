@@ -11,13 +11,15 @@ class Controller_Comunity extends Controller_Site {
 
     public function action_publish() {
         $link = '';
-        $this->template->center = View::factory('sites/publisher')
+
+        $this->template->center = View::factory('partial/publisher')
                 ->bind('link', $link);
 
         if (Auth::instance()->logged_in()) {
-            $login = Auth::instance()->get_user()->id;
+            $login = Auth::instance()->get_user();
             $chat = ORM::factory('Transmision');
-            $check_chat = $chat->where('users_id', '=', $login)->find();
+            $check_chat = $chat->where('users_id', '=', $login->id)->find();
+            $link = $login->username;
             if (0 < $check_chat->count_all()) {
                 $this->redirect('/');
             } else {
@@ -50,7 +52,9 @@ class Controller_Comunity extends Controller_Site {
         $user = Auth::instance()->get_user();
         $trans = ORM::factory('Transmision', $user->id);
         try {
-            $trans->delete();
+            if ($trans->delete()) {
+                $this->redirect('/');
+            }
         } catch (ORM_Validation_Exception $exc) {
             echo $exc->getMessage();
         }

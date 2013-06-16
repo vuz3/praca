@@ -1,4 +1,6 @@
-<?php defined('SYSPATH') or die('No direct script access.');
+<?php
+
+defined('SYSPATH') or die('No direct script access.');
 
 /**
  * "main controller" it's a contener for 
@@ -6,7 +8,6 @@
  * 
  * @author Przemyslaw Kotlowski <john.doe@example.com>
  */
-
 class Controller_MainController extends Controller_Template {
 
     /**
@@ -59,65 +60,48 @@ class Controller_MainController extends Controller_Template {
         (null != $js) ? $js : $js = null;
         return $js;
     }
-    
+
     protected function check_Transmision($user_id) {
-        if(!empty($user_id))
-        $transmision = ORM::factory('Transmision',$user_id);
-        if($transmision->loaded()) {
+        if (!empty($user_id))
+            $transmision = ORM::factory('Transmision', $user_id);
+        if ($transmision->loaded()) {
             return true;
         } else {
             return false;
         }
     }
 
-    /**
-     * Get menu elements from databases
-     * 
-     * @return array
-     
-    public function get_menu($lang_id) {
-        if (null === $lang_id || empty($lang_id)) {
-            $lang_id = 1;
-        }
-
-        $menu = ORM::factory('Manage_Menu')->where('language_id', '=', $lang_id)->find_all();
-
-        return $menu;
-    }
-
-    /**
-     * Get template name of site
-     * 
-     * @return array
-    
-    public function get_template($path, $lang_id) {
-        $menu = ORM::factory('Manage_Menu');
-        $menu_result = $menu->where('href', 'LIKE', '%' . $path . '%')->find();
-        
-        if (!empty($menu_result)) {
-            $result = ORM::factory('Manage_Sites')->where('menu_id', '=', $menu_result->menu_id)->and_where('language_id', '=', $lang_id)->find();
-            return $result;
-        }
-    }
-
-    /**
-     * Get the content site
-     * 
-     * @param int $id
-     * @return object
-     
-    public function get_content($id) {
-        $content = ORM::factory('Manage_Content');
-        $content_result = $content->where('sites_id', '=', $id)->find_all();
-        return $content_result;
-    }*/
-    
     public function get_transmision() {
-        $transmision = ORM::factory('Transmision')->where('active','=','on')->find_all();
-        if(0 === $transmision->count()) {
+        $transmision = ORM::factory('Transmision')->where('active', '=', 'on')->find_all();
+        if (0 === $transmision->count()) {
             $transmision = "Brak nadających w tym momencie";
         }
         return $transmision;
     }
-    
+
+    public function add_services($user_id, $title, $price) {
+        if (!empty($user_id) && !empty($title) && !empty($price)) {
+            $service = ORM::factory('SimpleUser_Services');
+            $service->user_id = $user_id;
+            $service->title = $title;
+            $service->price = $price;
+            try {
+                if($service->save()) {
+                    return true;
+                }else return false;
+            } catch (ORM_Validation_Exception $exc) {
+                return false;
+            }
+        }
+    }
+
+    public function show_services($user_id) {
+        if (!empty($user_id)) {
+            $service = ORM::factory('SimpleUser_Services')->where('users_id','=',$user_id)->find_all();
+            return $service;
+        }
+        else
+            return false;
+    }
+
 }

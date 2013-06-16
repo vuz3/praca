@@ -1,6 +1,4 @@
-<?php
-
-defined('SYSPATH') or die('No direct script access.');
+<?php defined('SYSPATH') or die('No direct script access.');
 
 /**
  * Controller to view your subpage
@@ -31,10 +29,6 @@ class Controller_Site extends Controller_MainController {
         'code.jquery.com/ui/1.10.2/jquery-ui.js',
     );
 
-    public function __construct(Request $request, Response $response) {
-        parent::__construct($request, $response);
-    }
-
     /**
      * Set the variable before site were load
      */
@@ -57,13 +51,15 @@ class Controller_Site extends Controller_MainController {
     public function after() {
         $user = null;
         $path = 'header';
+        $check_trans = null;
         if(Auth::instance()->logged_in()) {
             $user = Auth::instance()->get_user();
+            $check_trans = $this->check_Transmision($user->id);
             $path = 'header_logged';
         }
         $this->template->header = View::factory('partial/' . $path . '')
                 ->bind('user',$user)
-                ->set('check_trans',$this->check_Transmision($user->id));
+                ->set('check_trans', $check_trans);
         $this->template->menu = View::factory('partial/menu');
         $this->template->footer = View::factory('partial/footer');
         parent::after();

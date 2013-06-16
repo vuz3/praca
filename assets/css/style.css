@@ -47,6 +47,10 @@ input { font:12px arial; }
     border:1px solid #ACD8F0; 
 }
 
+#service {
+    clear: both;
+}
+
 #add { width: 60px; }
 
 .error { color: #ff0000; }

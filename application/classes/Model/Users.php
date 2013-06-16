@@ -14,6 +14,10 @@ class Model_Users extends ORM {
             'model' => 'Transmision',
             'foreign_key' => 'users_id',
         ),
+        'service' => array(
+            'model' => 'SimpleUser_Services',
+            'foreign_key' => 'users_id',
+        ),
     );
 
 }
