@@ -12,11 +12,11 @@ class Model_Users extends ORM {
     public $_has_one = array(
         'transmision' => array(
             'model' => 'Transmision',
-            'foreign_key' => 'users_id',
+            'foreign_key' => 'publisher_id',
         ),
         'service' => array(
             'model' => 'SimpleUser_Services',
-            'foreign_key' => 'users_id',
+            'foreign_key' => 'publisher_id',
         ),
     );
 

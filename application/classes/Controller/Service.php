@@ -7,7 +7,7 @@
 
 class Controller_Service extends Controller_Site {
 
-    public $template = 'sites/service';
+    public $template = 'partial/service';
 
     public function action_serviceAdd() {
         $post = $this->request->post();

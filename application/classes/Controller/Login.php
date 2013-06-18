@@ -32,10 +32,10 @@ class Controller_Login extends Controller_Template {
                     $this->template->msg = 'Sorry we can not login in now please check username and password<br> ';
                 }
                 else
-                    $this->redirect('user/index');
+                    $this->redirect('my/user');
             }
         } else {
-            $this->redirect('/useful/manager/index');
+            $this->redirect('my/user');
         }
     }
 

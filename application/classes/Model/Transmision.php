@@ -16,7 +16,7 @@ class Model_Transmision extends ORM {
     public $_belongs_to = array(
         'users' => array(
             'model' => 'Users',
-            'foreign_key' => 'users_id',
+            'foreign_key' => 'publisher_id',
         ),
     );
 

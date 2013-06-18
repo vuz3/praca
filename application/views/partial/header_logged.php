@@ -10,8 +10,10 @@ if (isset($user)) {
         if(!$check_trans) {
             echo HTML::anchor('comunity/publish/' . $user->username . '', 'Rozpocznij Transmisje na żywo!<br>');
         } else {
-            echo "Już prowadzisz transmisje, wcelu jej zakończenia kliknij na zakończ, lub też możesz przywrucić swój chat\t";
+            echo "Już prowadzisz transmisje, wcelu jej zakończenia kliknij na zakończ\t";
             echo HTML::anchor('comunity/end','Zakończ<br>');
+            echo "lub też możesz przywrucić swój chat\t";
+            echo HTML::anchor('comunity/publish/' . $user->username . '', 'Przywróć<br>');
         }
     }
     

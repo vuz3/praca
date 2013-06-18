@@ -2,15 +2,32 @@
 <p>Link do Twojego czatu: <?php if (isset($link)) echo URL::base() . 'comunity/publish/' . $link->username ?></p>
 <script type="text/javascript">
     var flashvars = {
-        name1: "hello"
+        streamer: "rtmp://localhost/show4u",
+        type: "rtmp",
+        file: "rtmp://localhost/show4u/vuz3",
+        name: "vuze",
+        controlbar: 'bottom',
+        stretching: 'none',
+        frontcolor: '86C29D', // text & icons                  (green)
+        backcolor: '849BC1', // playlist background           (blue)
+        lightcolor: 'C286BA', // selected text/track highlight (pink)
+        screencolor: 'FFFFFF', // screen background             (black)
+        id: 'playerID',
+        autostart: 'true'
     };
-    var params = {allowfullscreen: "true"};
+
+    var params = {
+        allowfullscreen: "true",
+        allowscriptscreen: "always",
+        bgcolor: "#FFFFFF"
+    };
     var attributes = {
         id: "flash",
-        name: "flash"
+        name: "flash",
     };
-    swfobject.embedSWF("<?= URL::base() ?>assets/swf/simpleBroadcaster.swf", "flash", "400px", "400px", "9.0.0", "<?= URL::base() ?>assets/swf/assets/expressInstall.swf", flashvars, params, attributes);
+    swfobject.embedSWF("<?= URL::base() ?>assets/swf/simpleBroadcaster.swf", "flash", "400px", "400px", "9.0.0", false, flashvars, params, attributes);
 </script>
+
 
 <div id="flash">
     <h1>You need the Adobe Flash Player for this demo, download it by clicking the image below.</h1>
@@ -19,11 +36,10 @@
 
 <div id="chat">
     <div id="chatbox">
+        
     </div>
-    <form action="#" method="POST">
         <input type="text" id="usermsg" name="message"/>
-        <input type="submit" id="add" name="add"/>
-    </form>
+        <input type="button" id="add" name="add" value="Send"/>
 </div>
 
 <div id="services">
@@ -36,13 +52,6 @@
                 <th>+/-</th>
             </tr>
         </thead>
-        <tfoot>
-            <tr>
-                <th colspan="4">
-                    <input type="submit" name="wyslij" value="Wyślij">
-                </th>
-            </tr>
-        </tfoot>
         <tbody>
             <tr>
                 <td><input type="text" name="user_id" id="user_id" value="<?= $link->id ?>"/></td></td>
@@ -55,4 +64,26 @@
 </div>
 
 <div id="service">
+    <?php
+    if (isset($services)) {
+        echo "<table>";
+        if (is_array($services) || is_object($services)) {
+            ?>
+            <tr>
+                <td>Tytul</td>
+                <td>Cena</td>
+            </tr>
+            <?php
+            foreach ($services as $service) {
+                ?>
+                <tr>
+                    <td><?= $service->title ?></td>
+                    <td><?= $service->price ?></td>
+                </tr>
+                <?php
+            }
+        }
+        echo "</table>";
+    }
+    ?>
 </div>

@@ -63,8 +63,8 @@ class Controller_MainController extends Controller_Template {
 
     protected function check_Transmision($user_id) {
         if (!empty($user_id))
-            $transmision = ORM::factory('Transmision', $user_id);
-        if ($transmision->loaded()) {
+            $transmision = ORM::factory('Transmision')->where('publisher_id','=',$user_id)->find();
+        if (count($transmision->publisher_id)) {
             return true;
         } else {
             return false;
