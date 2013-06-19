@@ -1,5 +1,11 @@
 
-<p>Link do Twojego czatu: <?php if (isset($link)) echo URL::base() . 'comunity/publish/' . $link->username ?></p>
+<p>Link do Twojego czatu: <?php
+    if (isset($link)) {
+        echo URL::base() . 'comunity/publish/' . $link->username;
+    } else {
+        $link = null;
+    }
+    ?></p>
 <script type="text/javascript">
     var flashvars = {
         streamer: "rtmp://localhost/show4u",
@@ -34,12 +40,12 @@
     <p><a href="http://www.adobe.com/go/getflashplayer"><img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="Get Adobe Flash player" /></a></p>
 </div>
 
-<div id="chat">
+<div id="chat" class="chat_<?= $link->id ?>">
     <div id="chatbox">
-        
+
     </div>
-        <input type="text" id="usermsg" name="message"/>
-        <input type="button" id="add" name="add" value="Send"/>
+    <input type="text" id="usermsg" name="message"/>
+    <input type="button" id="add" name="add" value="Send"/>
 </div>
 
 <div id="services">

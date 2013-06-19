@@ -146,9 +146,11 @@ Route::set('usersys', 'my/(<lang>/)(<controller>(/<action>(/<login>)))',
     'login' => '[a-zA-Z0-9]+',
   ))
   ->defaults(array(
+      'lang' => 'pl',
       'directory' => 'User',
       'controller' => 'User',
       'action' => 'index',
+      'login' => null,
   ));
 
 Route::set('def', '(<lang>/)(<controller>(/<action>(/<login>)))',
@@ -157,8 +159,10 @@ Route::set('def', '(<lang>/)(<controller>(/<action>(/<login>)))',
     'login' => '[a-zA-Z0-9]+',
   ))
   ->defaults(array(
+      'lang' => 'pl',
       'controller' => 'site',
       'action' => 'index',
+      'login' => null,
   ));
 
 

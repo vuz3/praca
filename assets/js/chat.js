@@ -7,9 +7,11 @@ $(document).ready(function() {
     var action = '/praca_mark_I/my/chat/';
     $("#add").click(function() {
         var dane = $("#usermsg").val();
+        var myclass = $("#chat").attr("class");
         jQuery.post(action + 'addMessage/',
                 {
-                    msg: dane
+                    msg: dane,
+                    cls: myclass
                 },
                 function(response) {
                     if (response != 'ok') {
